@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <title>Recipe page</title>
+</head>
+<body>
+    <h1>View Recipes</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#">Recipe Share</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="/recipes">back to recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Logout</a>
+            </li>
+            </ul>
+        </nav>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+            <h1 class="text-primary mt-5">Welcome, {{user.first_name}}</h1>
+            <div class="d-flex justify-content-between">
+                <h2 class="text-success mb-5">Enjoy {{recipe.name}} today!</h2>
+                <h2 class="text-primary">Recipe Posted by: {{recipe.user.first_name}}  {{recipe.user.last_name}}</h2>
+            </div>
+                <div class=" border border-secondary mx-auto p-3 col-6 bg-light">
+                    
+                        <h4>Under 30 Minutes?</h4>
+                        <p>{% if recipe.under_30_min: %}
+                            YES
+                            {% else: %}
+                            NO
+                        {%endif%}</p>
+                        <h4>Description:</h4>
+                        <p>{{recipe.description}}</p>
+                        <h4>Instructions</h4>
+                        <p>{{recipe.instructions}}</p>
+                        <h4>Date Made</h4>
+                        <p>{{recipe.date_cooked.strftime('%B-%d-%Y')}}</p>
+                </div>    
+            </div>
+        </div>
+    </div>
+</body>
+</html>

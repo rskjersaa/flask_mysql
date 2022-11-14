@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1>New recipes</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#">Recipe Share</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="/recipes">back to recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Logout</a>
+            </li>
+            </ul>
+        </nav>
+    <div class= "container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-around my-5">
+                    <!-- <h1 class="text-danger my-1">Add a New Recipe</h1> -->
+                    <form action="/create_recipe" method="POST" class="p-3 col-4 mx-auto my-5 bg-dark text-light">
+                        <h2 class="text-center text-primary">Add recipe here</h2>
+                        {% with messages = get_flashed_messages()%}
+                            {% if messages %}
+                            <div class = "alert alert-danger" role="alert">
+                                    <strong>Flash AHHHHHHH!!!!</strong>
+                                    {% for message in messages %}
+                                    <p>{{message}}</p>
+                                    {% endfor %}
+                            </div>
+                            {% endif %}   
+                        {% endwith %}
+                        <div class="form-group">
+                            <label for="name">Recipe Name:</label>
+                            <input type="text" name="name"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" name="description"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="instructions">Instructions:</label>
+                            <input type="textarea rows=4" name="instructions" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="date_cooked">Date Cooked/Made:</label>
+                            <input type="date" name="date_cooked"  class="form-control">
+                        </div>
+
+                        <div class="form-check">
+                            <p class="h5 mx-auto my-3">Under 30 minutes?</p>
+                            <input type="radio" class="form-check-input"  name="under_30_min" value="1" checked>YES
+                            <label class="form-check-label" for="radio1"></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input"  name="under_30_min" value="0">NO
+                            <label class="form-check-label" for="radio2"></label>
+                        </div>
+                        <input type="submit" value="Create Recipe" class="btn btn-primary my-3 btn-outline-dark">
+                    </form>
+</body>
+</html>
